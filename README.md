@@ -13,12 +13,4 @@ There are some System requirements to configure cluster.
 
 #On all nodes, base OS is CentOS 7
 
-infra1structure Setup: 
-*********************
 
-Hostname			                  IP Address	              CPUs	      RAM	      HDD			              OS		    Role
-foreman.lab.local              	192.168.56.100            	 2	        2 GB	    /dev/sda (100 GB) 	CentOS7	  Master Node
-node101.lab.local              	192.168.56.101            	 2	        2 GB	    /dev/sda (100 GB) 	CentOS7	  Master Node
-node102.lab.local             	192.168.56.102            	 2	        2 GB	    /dev/sda (100 GB) 	CentOS7	  Worker Node 
-node103.lab.local             	192.168.56.103            	 2	        2 GB	    /dev/sda (100 GB) 	CentOS7	  Worker Node
-node104.lab.local             	192.168.56.104	             2	        2 GB	    /dev/sda (100 GB) 	CentOS7	  infra Node
