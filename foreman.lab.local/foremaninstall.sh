@@ -1,9 +1,9 @@
 #!/bin/bash
-yum -y install https://yum.puppet.com/puppet6-release-el-7.noarch.rpm
-yum -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-yum -y install https://yum.theforeman.org/releases/1.22/el7/x86_64/foreman-release.rpm
-yum -y localinstall https://fedorapeople.org/groups/katello/releases/yum/nightly/katello/el7/x86_64/katello-repos-latest.rpm
-yum -y install foreman-installer 
+yum -y localinstall https://fedorapeople.org/groups/katello/releases/yum/3.12/katello/el7/x86_64/katello-repos-latest.rpm
+yum -y localinstall https://yum.theforeman.org/releases/1.22/el7/x86_64/foreman-release.rpm
+yum -y localinstall https://yum.puppet.com/puppet6-release-el-7.noarch.rpm
+yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum -y install foreman-release-scl
 yum -y update
 yum -y install katello
 hostnamectl set-hostname foreman.lab.local
