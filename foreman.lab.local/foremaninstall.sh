@@ -6,6 +6,7 @@ yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.
 yum -y install foreman-release-scl
 yum -y update
 yum -y install katello
+sed -i "\$ a $1 192.168.56.100\t\t$NEW_HOST foreman.lab.local\t$NEW_HOST" /etc/hosts
 hostnamectl set-hostname foreman.lab.local
 foreman-installer --scenario katello  --foreman-initial-organization lab --foreman-initial-location UAE  --foreman-initial-admin-username admin --foreman-initial-admin-password password --foreman-compute-ec2-version
 wget -q https://www.centos.org/keys/RPM-GPG-KEY-CentOS-7 -O /tmp/RPM-GPG-KEY-CentOS-7
