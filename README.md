@@ -13,4 +13,6 @@ There are some System requirements to configure cluster.
 
 #On all nodes, base OS is CentOS 7
 
+Once "Foreman Server" got all required products add and sync completed "CentOS Base/Update/Extras/Fasttracke/Centos-Ansible/Openshift311/CentosPlus" & Docker images which required offline install for OpenShift(OKD) V3.11.0.
+
 
