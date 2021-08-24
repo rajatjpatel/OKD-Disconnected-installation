@@ -1,0 +1,22 @@
+su - postgres
+psql foreman
+delete from foreman_tasks_tasks where id in(select id from foreman_tasks_tasks where state = 'paused' and result = 'error');
+delete from foreman_tasks_tasks where id in(select id from foreman_tasks_tasks where state = 'stopped' and result = 'error');
+\q
+
+foreman-rake katello:clean_backend_objects --trace
+foreman-rake katello:reindex --trace
+
+
+# systemctl stop foreman-tasks
+
+# foreman-rake console  
+ForemanTasks::Task.where(:state => :paused).where(:label => "Actions::Katello::Repository::Sync").destroy_all
+ForemanTasks::Task.where(:state => :paused).where(:label => "Actions::Pulp::Consumer::GenerateApplicability").destroy_all
+ForemanTasks::Task.where(:state => :paused).where(:label => "Actions::Katello::System::GenerateApplicability").destroy_all
+
+# systemctl start foreman-tasks
+
+sudo su - postgres -c "psql -d foreman -c 'select label,count(label),state,result from foreman_tasks_tasks where state <> '\''stopped'\'' group by label,state,result ORDER BY label;'
+
+foreman-rake foreman_tasks:cleanup TASK_SEARCH='label = Actions::Katello::Repository::Sync' STATES='running,pending,stopped' VERBOSE=true
